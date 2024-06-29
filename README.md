@@ -8,9 +8,9 @@ I searched but cannot find a solution to "maintain" my pets, especially the chic
 
 Install instructions at for exmample Ubuntu server 22.04
 
-
+```
 sudo apt update  
-sudo apt install apache2 mariadb-server php php-mysql  
+sudo apt install apache2 mariadb-server php php-mysql git
 <br>
 sudo mysql_secure_installation  
 sudo systemctl start apache2  
@@ -20,9 +20,10 @@ sudo mysql -u root -p
 CREATE DATABASE haustierverwaltung;  
 CREATE USER 'haustieruser'@'localhost' IDENTIFIED BY 'sicheres_passwort';  
 GRANT ALL PRIVILEGES ON haustierverwaltung.* TO 'haustieruser'@'localhost';  
-FLUSH PRIVILEGES;  
+FLUSH PRIVILEGES;
+```
 <br>
-Still in the mariadb executionwindow: 
+Still in the mariadb executionwindow insert the table structur:
 ``` 
 USE haustierverwaltung;
 
@@ -58,4 +59,8 @@ CREATE TABLE benutzer (
 );
 ```
 <br>
+```quit  ```
+<br>
+
+
 
