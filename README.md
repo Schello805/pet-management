@@ -11,19 +11,20 @@ Install instructions at for exmample Ubuntu server 22.04
 ```
 sudo apt update  
 sudo apt install apache2 mariadb-server php php-mysql git
-<br>
+
 sudo mysql_secure_installation  
 sudo systemctl start apache2  
 sudo systemctl start mariadb  
 sudo mysql -u root -p  
-<br>
+
 CREATE DATABASE haustierverwaltung;  
 CREATE USER 'haustieruser'@'localhost' IDENTIFIED BY 'sicheres_passwort';  
 GRANT ALL PRIVILEGES ON haustierverwaltung.* TO 'haustieruser'@'localhost';  
 FLUSH PRIVILEGES;
 ```
-<br>
-Still in the mariadb executionwindow insert the table structur:
+
+Still in the mariadb executionwindow insert the table structur:  
+
 ``` 
 USE haustierverwaltung;
 
@@ -58,9 +59,18 @@ CREATE TABLE benutzer (
     email VARCHAR(255) NOT NULL UNIQUE
 );
 ```
-<br>
-```quit  ```
-<br>
+
+
+```quit
+cd /var/www/html
+git clone https://github.com/Schello805/pet-management.git
+nano /etc/apache2/sites-enabled/000-default.conf
+```
+change the DocumentRoot to  
+```
+/var/www/html/pet-management 
+```
+service apache2 restart
 
 
 
