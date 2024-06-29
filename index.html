@@ -1,106 +1,47 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="de">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Haustierverwaltung</title>
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <header class="navbar navbar-expand navbar-dark bg-primary">
-        <a class="navbar-brand" href="#">Haustierverwaltung</a>
-        <div class="collapse navbar-collapse">
-            <ul class="navbar-nav mr-auto">
-                <li class="nav-item"><a id="link-haustier-liste" class="nav-link" href="#">Haustierliste</a></li>
-                <li class="nav-item"><a id="link-neues-haustier" class="nav-link" href="#">Neues Haustier</a></li>
-                <li class="nav-item"><a id="link-profil" class="nav-link" href="#">Profil</a></li>
-                <li class="nav-item"><a id="link-dokumente" class="nav-link" href="#">Dokumente</a></li>
-            </ul>
-        </div>
-    </header>
-    <main>
-        <section id="haustier-liste-section">
-            <h2>Haustierliste</h2>
-            <ul id="liste" class="list-group"></ul>
-        </section>
-        <section id="neues-haustier-section" class="d-none">
-            <h2>Neues Haustier</h2>
-            <form id="neues-haustier-form">
-                <div class="form-group">
-                    <label for="name">Name</label>
-                    <input type="text" id="name" class="form-control" name="name" required>
-                </div>
-                <div class="form-group">
-                    <label for="geburtsdatum">Geburtsdatum</label>
-                    <input type="date" id="geburtsdatum" class="form-control" name="geburtsdatum" required>
-                </div>
-                <div class="form-group">
-                    <label for="geschlecht">Geschlecht</label>
-                    <select id="geschlecht" class="form-control" name="geschlecht" required>
-                        <option value="Weiblich">Weiblich</option>
-                        <option value="Männlich">Männlich</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label for="letzteImpfung">Letzte Impfung</label>
-                    <input type="date" id="letzteImpfung" class="form-control" name="letzteImpfung">
-                </div>
-                <div class="form-group">
-                    <label for="letzteImpfungBeschreibung">Letzte Impfung Beschreibung</label>
-                    <input type="text" id="letzteImpfungBeschreibung" class="form-control" name="letzteImpfungBeschreibung">
-                </div>
-                <div class="form-group">
-                    <label for="naechsteImpfung">Nächste Impfung</label>
-                    <input type="date" id="naechsteImpfung" class="form-control" name="naechsteImpfung">
-                </div>
-                <div class="form-group">
-                    <label for="naechsteImpfungBeschreibung">Nächste Impfung Beschreibung</label>
-                    <input type="text" id="naechsteImpfungBeschreibung" class="form-control" name="naechsteImpfungBeschreibung">
-                </div>
-                <div class="form-group">
-                    <label for="tierart">Tierart</label>
-                    <select id="tierart" class="form-control" name="tierart" required>
-                        <option value="Hund">Hund</option>
-                        <option value="Katze">Katze</option>
-                        <option value="Kaninchen">Kaninchen</option>
-                        <option value="Huhn">Huhn</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label for="rasse">Rasse</label>
-                    <input type="text" id="rasse" class="form-control" name="rasse" required>
-                </div>
-                <div class="form-group">
-                    <label for="foto">Foto</label>
-                    <input type="file" id="foto" class="form-control" name="foto" accept="image/*">
-                </div>
-                <button type="submit" class="btn btn-primary">Hinzufügen</button>
-            </form>
-        </section>
-        <section id="profil-section" class="d-none">
-            <h2>Profil</h2>
-            <form id="profil-form">
-                <div class="form-group">
-                    <label for="email">E-Mail Adresse</label>
-                    <input type="email" id="email" class="form-control" value="example@example.com" required>
-                </div>
-                <button type="submit" class="btn btn-primary">Speichern</button>
-            </form>
-        </section>
-        <section id="dokumente-section" class="d-none">
-            <h2>Dokumente</h2>
-            <form id="dokumente-form">
-                <div class="form-group">
-                    <label for="dokument-upload">Dokument hochladen</label>
-                    <input type="file" id="dokument-upload" class="form-control" accept=".pdf,.doc,.docx,.jpg,.png">
-                </div>
-                <button type="submit" class="btn btn-primary">Hochladen</button>
-            </form>
-            <h3>Hochgeladene Dokumente</h3>
-            <ul id="dokumente-liste" class="list-group"></ul>
-        </section>
-    </main>
+    <!-- Navigation -->
+    <nav>
+        <ul>
+            <li id="haustier-liste-nav">Haustierliste</li>
+            <li id="neues-haustier-nav">Neues Haustier</li>
+            <li id="profil-nav">Profil</li>
+            <li id="dokumente-nav">Dokumente</li>
+        </ul>
+    </nav>
+
+    <!-- Sektionen -->
+    <section id="haustier-liste-section" class="d-none">
+        <ul id="liste"></ul>
+    </section>
+    <section id="neues-haustier-section" class="d-none">
+        <form id="neues-haustier-form">
+            <!-- Formularfelder für neues Haustier -->
+            <button type="submit">Hinzufügen</button>
+        </form>
+    </section>
+    <section id="profil-section" class="d-none">
+        <form id="profil-form">
+            <input type="email" id="email" required>
+            <button type="submit">Speichern</button>
+        </form>
+    </section>
+    <section id="dokumente-section" class="d-none">
+        <form id="dokumente-form">
+            <input type="file" id="dokument" required>
+            <button type="submit">Hochladen</button>
+        </form>
+        <ul id="dokumente-liste"></ul>
+    </section>
+
+    <!-- Script am Ende des Body-Tags einfügen -->
     <script src="script.js"></script>
 </body>
 </html>
