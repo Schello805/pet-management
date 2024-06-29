@@ -6,6 +6,11 @@ document.addEventListener('DOMContentLoaded', () => {
         'dokumente-section': document.getElementById('dokumente-section'),
     };
 
+    const haustierListeNav = document.getElementById('haustier-liste-nav');
+    const neuesHaustierNav = document.getElementById('neues-haustier-nav');
+    const profilNav = document.getElementById('profil-nav');
+    const dokumenteNav = document.getElementById('dokumente-nav');
+
     const haustierListe = document.getElementById('liste');
     const neuesHaustierForm = document.getElementById('neues-haustier-form');
     const profilForm = document.getElementById('profil-form');
@@ -104,57 +109,29 @@ document.addEventListener('DOMContentLoaded', () => {
                     haustierListe.appendChild(li);
 
                     // Event listener for the form submission
-                    document.getElementById(`bearbeite-haustier-form-${haustier.id}`).addEventListener('submit', (event) => {
+                    document.getElementById(`bearbeite-haustier-form-${haustier.id}`).addEventListener('submit', function (event) {
                         event.preventDefault();
                         speichereHaustierDaten(haustier.id);
                     });
 
-                    // Event listener for the file input
-                    document.getElementById(`foto-${haustier.id}`).addEventListener('change', (event) => {
+                    // Event listener for the file input change
+                    document.getElementById(`foto-${haustier.id}`).addEventListener('change', function (event) {
                         const file = event.target.files[0];
-                        if (file) {
-                            const reader = new FileReader();
-                            reader.onload = (e) => {
-                                document.getElementById(`foto-preview-${haustier.id}`).src = e.target.result;
-                            };
-                            reader.readAsDataURL(file);
-                        }
+                        const reader = new FileReader();
+                        reader.onload = function (e) {
+                            document.getElementById(`foto-preview-${haustier.id}`).src = e.target.result;
+                        };
+                        reader.readAsDataURL(file);
                     });
                 });
             })
             .catch(error => console.error('Fehler:', error));
     }
 
-    function getIcon(tierart) {
-        switch (tierart) {
-            case 'Hund': return 'https://img.icons8.com/ios-filled/50/000000/dog.png';
-            case 'Katze': return 'https://img.icons8.com/ios-filled/50/000000/cat.png';
-            case 'Kaninchen': return 'https://img.icons8.com/ios-filled/50/000000/rabbit.png';
-            case 'Huhn': return 'https://img.icons8.com/ios-filled/50/000000/chicken.png';
-            default: return 'https://img.icons8.com/ios-filled/50/000000/pet.png';
-        }
+    function toggleDetails(id) {
+        const details = document.getElementById(`details-${id}`);
+        details.classList.toggle('d-none');
     }
-
-    window.toggleDetails = function(id) {
-        const detailsDiv = document.getElementById(`details-${id}`);
-        detailsDiv.classList.toggle('d-none');
-    };
-
-    window.loescheHaustier = function(id) {
-        const formData = new FormData();
-        formData.append('id', id);
-
-        fetch('loeschen.php', {
-            method: 'POST',
-            body: formData
-        })
-        .then(response => response.text())
-        .then(data => {
-            console.log(data);
-            zeigeHaustierListe(); // Aktualisiere die Liste nach dem Löschen
-        })
-        .catch(error => console.error('Fehler:', error));
-    };
 
     function fuegeNeuesHaustierHinzu(event) {
         event.preventDefault();
@@ -251,21 +228,21 @@ document.addEventListener('DOMContentLoaded', () => {
         sections[section].classList.remove('d-none');
     }
 
-    document.getElementById('haustier-liste-nav').addEventListener('click', () => {
+    haustierListeNav.addEventListener('click', () => {
         zeigeSection('haustier-liste-section');
         zeigeHaustierListe();
     });
 
-    document.getElementById('neues-haustier-nav').addEventListener('click', () => {
+    neuesHaustierNav.addEventListener('click', () => {
         zeigeSection('neues-haustier-section');
     });
 
-    document.getElementById('profil-nav').addEventListener('click', () => {
+    profilNav.addEventListener('click', () => {
         zeigeSection('profil-section');
         profilForm.querySelector('#email').value = userProfil.email;
     });
 
-    document.getElementById('dokumente-nav').addEventListener('click', () => {
+    dokumenteNav.addEventListener('click', () => {
         zeigeSection('dokumente-section');
         ladeDokumente();
     });
