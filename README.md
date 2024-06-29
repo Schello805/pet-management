@@ -22,7 +22,9 @@ CREATE USER 'haustieruser'@'localhost' IDENTIFIED BY 'sicheres_passwort';
 GRANT ALL PRIVILEGES ON haustierverwaltung.* TO 'haustieruser'@'localhost';  
 FLUSH PRIVILEGES;  
 <br>
-`USE haustierverwaltung;
+Still in the mariadb executionwindow: 
+``` 
+USE haustierverwaltung;
 
 CREATE TABLE haustiere (
     id INT AUTO_INCREMENT PRIMARY KEY,
@@ -49,11 +51,11 @@ CREATE TABLE benutzer (
     id INT AUTO_INCREMENT PRIMARY KEY,
     email VARCHAR(255) NOT NULL UNIQUE
 );
-`
 
 CREATE TABLE benutzer (
     id INT AUTO_INCREMENT PRIMARY KEY,
     email VARCHAR(255) NOT NULL UNIQUE
 );
-
+```
+<br>
 
