@@ -1,66 +1,36 @@
 <!DOCTYPE html>
 <html lang="de">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Haustierverwaltung</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="styles.css">
-    <style>
-        .foto-preview {
-            max-width: 150px;
-            max-height: 150px;
-            border-radius: 50%;
-            object-fit: cover;
-            margin-top: 10px;
-        }
-
-        .details {
-            margin-top: 10px;
-            border: 1px solid #ccc;
-            padding: 10px;
-        }
-
-        .details-button {
-            background-color: #007bff;
-            color: #fff;
-            border: none;
-            padding: 5px 10px;
-            cursor: pointer;
-        }
-
-        .action-buttons {
-            margin-top: 10px;
-        }
-
-        .list-group-item-custom {
-            margin-top: 10px;
-        }
-    </style>
 </head>
-
-<body
+<body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="#">Haustierverwaltung</a>
-    <!-- Hier wird das fehlende Element eingefügt -->
-    <ul class="navbar-nav" id="haustier-liste-nav">
-        <li class="nav-item">
-            <a class="nav-link" href="#" onclick="zeigeSection('haustier-liste-section')">Haustierliste</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="#" onclick="zeigeSection('neues-haustier-section')">Neues Haustier</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="#" onclick="zeigeSection('profil-section')">Profil</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="#" onclick="zeigeSection('dokumente-section')">Dokumente</a>
-        </li>
-    </ul>
-</nav>
-
-    <div class="container mt-3">
+        <a class="navbar-brand" href="#">Haustierverwaltung</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item active">
+                    <a class="nav-link" href="#" id="haustier-liste-nav">Haustierliste</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#" id="neues-haustier-nav">Neues Haustier</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#" id="profil-nav">Profil</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#" id="dokumente-nav">Dokumente</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <div class="container mt-4">
         <div id="haustier-liste-section">
             <h2>Haustierliste</h2>
             <ul id="liste" class="list-group"></ul>
@@ -140,11 +110,9 @@
             <ul id="dokumente-liste" class="list-group mt-3"></ul>
         </div>
     </div>
-
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script src="script.js"></script>
 </body>
-
 </html>
