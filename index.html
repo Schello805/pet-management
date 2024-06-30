@@ -1,16 +1,50 @@
 <!DOCTYPE html>
 <html lang="de">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Haustierverwaltung</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="styles.css">
+    <style>
+        .foto-preview {
+            max-width: 150px;
+            max-height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-top: 10px;
+        }
+
+        .details {
+            margin-top: 10px;
+            border: 1px solid #ccc;
+            padding: 10px;
+        }
+
+        .details-button {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            padding: 5px 10px;
+            cursor: pointer;
+        }
+
+        .action-buttons {
+            margin-top: 10px;
+        }
+
+        .list-group-item-custom {
+            margin-top: 10px;
+        }
+    </style>
 </head>
+
 <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <a class="navbar-brand" href="#">Haustierverwaltung</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
@@ -30,8 +64,7 @@
             </ul>
         </div>
     </nav>
-
-    <div class="container mt-4">
+    <div class="container mt-3">
         <div id="haustier-liste-section">
             <h2>Haustierliste</h2>
             <ul id="liste" class="list-group"></ul>
@@ -39,56 +72,48 @@
         <div id="neues-haustier-section" style="display: none;">
             <h2>Neues Haustier hinzufügen</h2>
             <form id="neues-haustier-form">
-                <div class="form-row">
-                    <div class="form-group col-md-6">
-                        <label for="name">Name</label>
-                        <input type="text" id="name" class="form-control" required>
-                    </div>
-                    <div class="form-group col-md-6">
-                        <label for="geburtsdatum">Geburtsdatum</label>
-                        <input type="date" id="geburtsdatum" class="form-control" required>
-                    </div>
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" id="name" class="form-control" required>
                 </div>
-                <div class="form-row">
-                    <div class="form-group col-md-6">
-                        <label for="geschlecht">Geschlecht</label>
-                        <select id="geschlecht" class="form-control" required>
-                            <option value="männlich">Männlich</option>
-                            <option value="weiblich">Weiblich</option>
-                        </select>
-                    </div>
-                    <div class="form-group col-md-6">
-                        <label for="tierart">Tierart</label>
-                        <select id="tierart" class="form-control" required>
-                            <option value="Kaninchen">Kaninchen</option>
-                            <option value="Huhn">Huhn</option>
-                            <option value="Katze">Katze</option>
-                            <option value="Hund">Hund</option>
-                        </select>
-                    </div>
+                <div class="form-group">
+                    <label for="geburtsdatum">Geburtsdatum</label>
+                    <input type="date" id="geburtsdatum" class="form-control" required>
                 </div>
-                <div class="form-row">
-                    <div class="form-group col-md-6">
-                        <label for="letzte-impfung">Letzte Impfung</label>
-                        <input type="date" id="letzte-impfung" class="form-control">
-                        <input type="text" id="letzte-impfung-info" class="form-control" placeholder="Impfungsart">
-                    </div>
-                    <div class="form-group col-md-6">
-                        <label for="naechste-impfung">Nächste Impfung</label>
-                        <input type="date" id="naechste-impfung" class="form-control">
-                        <input type="text" id="naechste-impfung-info" class="form-control" placeholder="Impfungsart">
-                    </div>
+                <div class="form-group">
+                    <label for="geschlecht">Geschlecht</label>
+                    <select id="geschlecht" class="form-control" required>
+                        <option value="männlich">Männlich</option>
+                        <option value="weiblich">Weiblich</option>
+                    </select>
                 </div>
-                <div class="form-row">
-                    <div class="form-group col-md-6">
-                        <label for="rasse">Rasse</label>
-                        <input type="text" id="rasse" class="form-control">
-                    </div>
-                    <div class="form-group col-md-6">
-                        <label for="foto">Foto</label>
-                        <input type="file" id="foto" class="form-control" accept="image/*">
-                        <img id="foto-preview" class="foto-preview mt-2" src="https://via.placeholder.com/150" alt="Foto Vorschau">
-                    </div>
+                <div class="form-group">
+                    <label for="letzte-impfung">Letzte Impfung</label>
+                    <input type="date" id="letzte-impfung" class="form-control">
+                    <input type="text" id="letzte-impfung-info" class="form-control" placeholder="Impfungsart">
+                </div>
+                <div class="form-group">
+                    <label for="naechste-impfung">Nächste Impfung</label>
+                    <input type="date" id="naechste-impfung" class="form-control">
+                    <input type="text" id="naechste-impfung-info" class="form-control" placeholder="Impfungsart">
+                </div>
+                <div class="form-group">
+                    <label for="tierart">Tierart</label>
+                    <select id="tierart" class="form-control" required>
+                        <option value="Kaninchen">Kaninchen</option>
+                        <option value="Huhn">Huhn</option>
+                        <option value="Katze">Katze</option>
+                        <option value="Hund">Hund</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="rasse">Rasse</label>
+                    <input type="text" id="rasse" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="foto">Foto</label>
+                    <input type="file" id="foto" class="form-control" accept="image/*">
+                    <img id="foto-preview" class="foto-preview" src="https://via.placeholder.com/150" alt="Foto Vorschau">
                 </div>
                 <button type="submit" class="btn btn-primary">Hinzufügen</button>
             </form>
@@ -106,15 +131,13 @@
         <div id="dokumente-section" style="display: none;">
             <h2>Dokumente</h2>
             <form id="dokumente-form">
-                <div class="form-row">
-                    <div class="form-group col-md-6">
-                        <label for="dokument-name">Dokumentname</label>
-                        <input type="text" id="dokument-name" class="form-control" required>
-                    </div>
-                    <div class="form-group col-md-6">
-                        <label for="dokument-datei">Datei</label>
-                        <input type="file" id="dokument-datei" class="form-control" required>
-                    </div>
+                <div class="form-group">
+                    <label for="dokument-name">Dokumentname</label>
+                    <input type="text" id="dokument-name" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label for="dokument-datei">Datei</label>
+                    <input type="file" id="dokument-datei" class="form-control" required>
                 </div>
                 <button type="submit" class="btn btn-primary">Hochladen</button>
             </form>
@@ -123,8 +146,9 @@
     </div>
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script src="script.js"></script>
 </body>
+
 </html>
