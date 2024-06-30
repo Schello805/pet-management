@@ -1,28 +1,16 @@
 <?php
-$servername = "localhost";
-$username = "haustieruser";
-$password = "sicheres_passwort";
-$dbname = "haustierverwaltung";
+header('Content-Type: application/json');
+require 'db_connection.php'; // Deine Datenbankverbindung
 
-// Verbindung zur Datenbank herstellen
-$conn = new mysqli($servername, $username, $password, $dbname);
+// Deine Abfrage
+$query = "SELECT * FROM haustiere";
+$result = $conn->query($query);
 
-// Verbindung überprüfen
-if ($conn->connect_error) {
-    die("Verbindung fehlgeschlagen: " . $conn->connect_error);
+$haustiere = array();
+while($row = $result->fetch_assoc()) {
+    $haustiere[] = $row;
 }
 
-$sql = "SELECT * FROM haustiere";
-$result = $conn->query($sql);
-
-if ($result->num_rows > 0) {
-    // Daten ausgeben
-    while($row = $result->fetch_assoc()) {
-        echo "id: " . $row["id"]. " - Name: " . $row["name"]. " - Geburtsdatum: " . $row["geburtsdatum"]. "<br>";
-    }
-} else {
-    echo "0 Ergebnisse";
-}
-
-$conn->close();
+// Gib die Daten als JSON aus
+echo json_encode($haustiere);
 ?>
