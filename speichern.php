@@ -1,18 +1,9 @@
 <?php
-$servername = "localhost";
-$username = "haustieruser";
-$password = "sicheres_passwort";
-$dbname = "haustierverwaltung";
+header('Content-Type: application/json');
+require 'db_connection.php'; // Deine Datenbankverbindung
 
-// Verbindung zur Datenbank herstellen
-$conn = new mysqli($servername, $username, $password, $dbname);
-
-// Verbindung überprüfen
-if ($conn->connect_error) {
-    die("Verbindung fehlgeschlagen: " . $conn->connect_error);
-}
-
-// Daten aus POST-Anfrage abrufen
+// Daten von POST erhalten
+$id = $_GET['id'];
 $name = $_POST['name'];
 $geburtsdatum = $_POST['geburtsdatum'];
 $geschlecht = $_POST['geschlecht'];
@@ -20,19 +11,18 @@ $letzteImpfung = $_POST['letzteImpfung'];
 $letzteImpfungBeschreibung = $_POST['letzteImpfungBeschreibung'];
 $naechsteImpfung = $_POST['naechsteImpfung'];
 $naechsteImpfungBeschreibung = $_POST['naechsteImpfungBeschreibung'];
-$tierart = $_POST['tierart'];
 $rasse = $_POST['rasse'];
-$foto = $_POST['foto']; // Pfad zum Bild, falls hochgeladen
 
-// SQL-Befehl zum Einfügen der Daten
-$sql = "INSERT INTO haustiere (name, geburtsdatum, geschlecht, letzteImpfung, letzteImpfungBeschreibung, naechsteImpfung, naechsteImpfungBeschreibung, tierart, rasse, foto)
-VALUES ('$name', '$geburtsdatum', '$geschlecht', '$letzteImpfung', '$letzteImpfungBeschreibung', '$naechsteImpfung', '$naechsteImpfungBeschreibung', '$tierart', '$rasse', '$foto')";
+// Optional: Foto hochladen und Pfad speichern
+// ...
 
-if ($conn->query($sql) === TRUE) {
-    echo "Neuer Datensatz erfolgreich erstellt";
-} else {
-    echo "Fehler: " . $sql . "<br>" . $conn->error;
-}
+// Aktualisiere die Datenbank
+$query = "UPDATE haustiere SET name=?, geburtsdatum=?, geschlecht=?, letzteImpfung=?, letzteImpfungBeschreibung=?, naechsteImpfung=?, naechsteImpfungBeschreibung=?, rasse=? WHERE id=?";
+$stmt = $conn->prepare($query);
+$stmt->bind_param("ssssssssi", $name, $geburtsdatum, $geschlecht, $letzteImpfung, $letzteImpfungBeschreibung, $naechsteImpfung, $naechsteImpfungBeschreibung, $rasse, $id);
+$stmt->execute();
 
-$conn->close();
+// Gib eine Erfolgsmeldung zurück
+$response = array('status' => 'success', 'message' => 'Daten gespeichert');
+echo json_encode($response);
 ?>
