@@ -71,8 +71,7 @@ nano /etc/apache2/sites-enabled/000-default.conf
 change the DocumentRoot to  
 ```
 /var/www/html/pet-management 
-```
 service apache2 restart
-
+```
 
 
