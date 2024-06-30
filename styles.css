@@ -1,97 +1,30 @@
-/* Allgemeine Anpassungen */
-body {
-    font-family: 'Roboto', sans-serif;
-    background-color: #f8f9fa;
-}
-
-.container {
-    margin-top: 20px;
-}
-
-/* Navbar Anpassungen */
-.navbar {
-    background-color: #343a40;
-}
-
-.navbar-brand,
-.navbar-nav .nav-link {
-    color: #ffffff;
-}
-
-.navbar-brand:hover,
-.navbar-nav .nav-link:hover {
-    color: #ffffff;
-}
-
-/* Haustierliste Styling */
-.list-group-item-custom {
-    background-color: #ffffff;
-    margin-bottom: 10px;
-    border: 1px solid #dee2e6;
-    border-radius: 5px;
+/* styles.css */
+.icon {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    margin-right: 10px;
 }
 
 .details {
     padding: 10px;
-    background-color: #f8f9fa;
-    border: 1px solid #ccc;
-    border-radius: 5px;
+    border: 1px solid #ddd;
     margin-top: 10px;
-}
-
-.icon {
-    width: 30px;
-    height: 30px;
-    margin-right: 10px;
-    border-radius: 50%;
 }
 
 .details-button {
     background-color: #007bff;
-    color: #ffffff;
+    color: white;
     border: none;
     padding: 5px 10px;
     cursor: pointer;
+    border-radius: 5px;
 }
 
 .details-button:hover {
     background-color: #0056b3;
 }
 
-/* Formular Anpassungen */
-.form-control {
-    margin-bottom: 10px;
-}
-
-.foto-preview {
-    max-width: 150px;
-    height: auto;
-    margin-top: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-}
-
-.action-buttons {
-    margin-top: 10px;
-}
-
-/* Profil Formular Anpassungen */
-#profil-section {
-    margin-top: 20px;
-}
-
-/* Dokumente Anpassungen */
-#dokumente-liste .list-group-item {
-    margin-bottom: 5px;
-}
-
-/* Responsives Design */
-@media (max-width: 768px) {
-    .navbar-nav {
-        flex-direction: column;
-    }
-
-    .navbar-nav .nav-link {
-        padding: .5rem 0;
-    }
+.action-buttons .btn {
+    margin-right: 5px;
 }
